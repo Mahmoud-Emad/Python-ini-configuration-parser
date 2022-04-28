@@ -1,4 +1,4 @@
-## INI-Configuration-file-parser
+## ini-configuration-parser
 
 ## description
 <p>
