@@ -1,4 +1,4 @@
-from configuration_parser.configure.parser import ConfigParser
+from configure.parser import ConfigParser
 
 config = ConfigParser()
 
