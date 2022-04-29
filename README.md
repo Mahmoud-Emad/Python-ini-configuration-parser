@@ -61,8 +61,8 @@ with open("example.ini", "r") as f:
 '''
 ```
 
-* Then you can test you'r file with mypy test library.
+<!-- * Then you can test you'r file with mypy test library.
 
 ```bash
     $ mypy file_name.py
-```
+``` -->
