@@ -1,4 +1,4 @@
-from src.errors.error import ErrorHandler
+from configuration_parser.errors.error import ErrorHandler
 
 from typing import Dict
 

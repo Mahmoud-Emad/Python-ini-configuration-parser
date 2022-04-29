@@ -1,5 +1,4 @@
-from src.configure.parser import ConfigParser
-import pytest
+from configuration_parser.configure.parser import ConfigParser
 
 config = ConfigParser()
 
