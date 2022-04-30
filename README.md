@@ -8,7 +8,7 @@
 ## Getting started
 <p>Clone this repo and follow the steps below</p>
 
-* You should install mypy for testing, or you can skip this step
+* You should install pytest for testing, or you can skip this step
 
 ```bash
     $ git clone Mahmoud-Emad/ini-configuration-parser
@@ -24,45 +24,48 @@ from configure.parser import ConfigParser
 
 config = ConfigParser()
 
-
-config["section"] = {
-    "key1":"this is a test value1",
-    "key2":"this is a test value2"
+config["deployment"] = {
+    "domain_name": "www.example.com",
+    "secret_key": "!@#$#$#@!!",
 }
 
-
-config["newsection"] ={
-    "domain_name":"example.com",
-    "secretkey":"!@#$#$#@!!",
+config["database"] = {
+    "host": "localhost",
+    "port": "3306",
+    "user": "root",
 }
-
+config["email"] = {
+    "host": "smtp.gmail.com",
+    "port": "587",
+}
+config["devolvement"] = {
+    "api_key": "!@#$%^&*()_+",
+}
 string_content = """
-    [section]
-    test=this is a test
-    test2= this is a test2
-    [newsection]
-    Have= Yes
-    Sure= No
+    [deployment]
+    domain_name=www.example.com
+    secret_key=!@#$#$#@!!
+    [devolvement]
+    api_key=!@#$%^&*()_+
 """
 
 with open("example.ini", "w") as f:
     config.write(f) # Check example.ini file contents
     config.sections() # Return a list of sections
-    config.get("newsection", "secretkey") # Get the value of a key in a section
-    config.append('newsection', {'new':'new'}) # Append a new key/value pair to section 'newsection'
-    config.append('section', {'new_test':'new_test'}) # Append a new key/value pair to section 'section'
+    config.get("deployment", "domain_name") # Get the value of a key in a section
+    config.append('devolvement', {'password':'#%$%80@#$36415'}) # Append a new key/value pair to section 'newsection'
 
 '''
 # Uncomment the following lines to test the read method if you have a file
 with open("example.ini", "r") as f:
     config.read(f) # Read example.ini file contents | you must have file example.ini in the same directory
     config.read_from_string(string_content) # you can use this method to check if everything working well
-    config.get("newsection", "Have") # Get the value of a key in a section
+    config.get("section", "key") # Get the value of a key in a section
 '''
 ```
 
-<!-- * Then you can test you'r file with mypy test library.
+* Then you can test you'r file with mypy test library.
 
 ```bash
-    $ mypy file_name.py
-``` -->
+    $ pytest
+```
