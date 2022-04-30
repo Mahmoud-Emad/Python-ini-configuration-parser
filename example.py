@@ -1,4 +1,4 @@
-from ini_configuration_parser.configure.parser import ConfigParser
+from ini_parser.configure.parser import ConfigParser
 
 config = ConfigParser()
 
