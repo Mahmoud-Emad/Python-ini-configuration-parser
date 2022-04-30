@@ -1,5 +1,5 @@
-from ini_parser.configure.parser import ConfigParser
-from ini_parser.errors.error import ErrorHandler
+from pyini_parser.configure.parser import ConfigParser
+from pyini_parser.errors.error import ErrorHandler
 import pytest
 
 

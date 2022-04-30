@@ -1,4 +1,4 @@
 """
 This package used to parse configuration files in the INI format.
 """
-from ini_parser.errors.error import *
+from pyini_parser.errors.error import *

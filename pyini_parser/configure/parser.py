@@ -3,7 +3,7 @@ This package used to parse configuration files in the INI format.
 """
 from typing import Dict
 
-from ini_parser.errors.error import ErrorHandler
+from pyini_parser.errors.error import ErrorHandler
 
 
 

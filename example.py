@@ -1,4 +1,4 @@
-from ini_parser.configure.parser import ConfigParser
+from pyini_parser.configure.parser import ConfigParser
 
 config = ConfigParser()
 
