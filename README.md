@@ -6,16 +6,10 @@
 </p>
 
 ## Getting started
-<p>Clone this repo and follow the steps below</p>
-
-* You should install pytest for testing, or you can skip this step
+<p>Install the package</p>
 
 ```bash
-$ git clone Mahmoud-Emad/ini-configuration-parser
-
-$ cd ini-configuration-parser
-
-$ pip install pytest
+$ pip install ini-configuration-parser
 ```
 
 ```python
