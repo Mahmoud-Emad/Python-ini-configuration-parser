@@ -62,8 +62,10 @@ with open("example.ini", "w") as f:
 
 ```
 
-* Then you can test you'r file with mypy test library.
+* Then you can test you'r file with pytest test library.
 
 ```bash
     $ pytest
 ```
+You should see something like this
+`======= 11 passed in 0.08s =======`
