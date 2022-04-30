@@ -4,22 +4,21 @@ import pytest, random
 
 
 config = ConfigParser()
-error = ErrorHandler()
 
 
 def test_valid_section_name():
     """Test section name"""
     section = "section_name"
-    assert error.validate_name(section) == "Valid"
+    assert ErrorHandler.validate_name(section) == "Valid"
 
 def test_invalid_section_name():
     """Test section name"""
     section = "section_name"
     with pytest.raises(NameError):
-        error.validate_name(section.join('#'))
-        error.validate_name(section.join('@'))
-        error.validate_name(section.join('-'))
-        error.validate_name(section.join(' '))
+        ErrorHandler.validate_name(section.join('#'))
+        ErrorHandler.validate_name(section.join('@'))
+        ErrorHandler.validate_name(section.join('-'))
+        ErrorHandler.validate_name(section.join(' '))
 
 def test_get_sections():
     """Test get sections"""

@@ -1,27 +1,32 @@
-from ini_configuration_parser.errors.error import ErrorHandler
+"""
+This package used to parse configuration files in the INI format.
+"""
 from typing import Dict
+
+from ini_configuration_parser.errors.error import ErrorHandler
 
 
 
 class ConfigParser:
+    """
+    ConfigParser class is used to parse configuration files in the INI format.
+    """
     def __init__(self):
         self.data = dict()
         self.view = dict()
-        self.assert_error = ErrorHandler()
         self.filename = None
-    
-    def __str__(self):return self.data.__str__()
-    def __exit__(self):self.close()
+
+    def __str__(self):
+        return self.data.__str__()
 
     def __getitem__(self, key):
         """Get the value of a key in a section"""
         return self.data.get(key)
-    
+
     def __setitem__(self, section, items):
         """Set section value"""
         self.data[section.upper()] = items
-        
-    
+
     def sections(self):
         """This method returns a list of section names, in the order in which they were defined."""
         return list(self.data.keys())
@@ -29,14 +34,14 @@ class ConfigParser:
     def write(self, filename) -> str:
         """This method writes the given file to the given filename"""
         self.filename = filename
-        with open(self.filename.name, "w") as f:
+        with open(self.filename.name, "w") as file:
             for section in self.sections():
-                self.assert_error.validate_name(section)
-                f.write(f"[{section}]\n")
+                ErrorHandler.validate_name(section)
+                file.write(f"[{section}]\n")
                 for key, value in self.data[section].items():
-                    self.assert_error.validate_name(key)
-                    f.write(f"{key}={value}\n")
-                f.write("\n")
+                    ErrorHandler.validate_name(key)
+                    file.write(f"{key}={value}\n")
+                file.write("\n")
         return f"{filename.name} written successfully"
 
     def get(self, section, key: str) -> str:
@@ -51,26 +56,17 @@ class ConfigParser:
             raise KeyError(f"Key {key} not found in section {section}")
 
     def read_from_string(self, string: str) -> Dict:
-        """This method reads the given string and returns a dictionary of sections and their values"""
-        section = None
-        for line in string.splitlines():
-            line = line.strip()
-            if line.startswith("[") and line.endswith("]"):
-                section = line[1:-1].upper()
-                self.assert_error.validate_name(section)
-                self.view[section] = dict()
-            elif "=" in line:
-                key, value = line.split("=")
-                key = key.replace(' ', '')
-                self.assert_error.validate_name(key)
-                self.view[section][key] = value
+        """
+        This method reads the given string,
+        and returns a dictionary of sections and their values
+        """
+        self.view = ErrorHandler.validate_string(string)
         return self.view
-    
+
     def read(self, filename) -> Dict:
         """This method reads the given file and returns a dictionary of sections and their values"""
         self.filename = filename
-        with open(filename.name, "r") as f:
-            return [filename.name]
+        return [self.filename.name]
 
     def append(self, section, items):
         """This method appends a new key/value pair to the given section"""

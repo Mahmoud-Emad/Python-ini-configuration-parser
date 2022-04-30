@@ -1,4 +1,4 @@
-from configure.parser import ConfigParser
+from ini_configuration_parser.configure.parser import ConfigParser
 
 config = ConfigParser()
 
@@ -32,6 +32,7 @@ with open("example.ini", "w") as f:
     config.sections() # Return a list of sections
     config.get("deployment", "domain_name") # Get the value of a key in a section
     config.append('devolvement', {'password':'#%$%80@#$36415'}) # Append a new key/value pair to section 'newsection'
+    print(config.read_from_string(string_content))
 
 '''
 # Uncomment the following lines to test the read method if you have a file
