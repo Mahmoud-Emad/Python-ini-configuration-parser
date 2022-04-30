@@ -1,5 +1,4 @@
 from errors.error import ErrorHandler
-
 from typing import Dict
 
 
@@ -42,9 +41,10 @@ class ConfigParser:
 
     def get(self, section, key: str) -> str:
         """This method returns the value of the given key in the given section"""
-        stander = self.data.get(section.upper()).get(key)
-        if stander:
-            return stander
+        if len(self.data) > 0:
+            stander = self.data.get(section.upper()).get(key)
+            if stander:
+                return stander
         try:
             return self.view[section.upper()][key]
         except KeyError:
@@ -61,6 +61,7 @@ class ConfigParser:
                 self.view[section] = dict()
             elif "=" in line:
                 key, value = line.split("=")
+                key = key.replace(' ', '')
                 self.assert_error.validate_name(key)
                 self.view[section][key] = value
         return self.view
@@ -69,7 +70,7 @@ class ConfigParser:
         """This method reads the given file and returns a dictionary of sections and their values"""
         self.filename = filename
         with open(filename.name, "r") as f:
-            return self.read_from_string(f.read())
+            return [filename.name]
 
     def append(self, section, items):
         """This method appends a new key/value pair to the given section"""
