@@ -11,11 +11,11 @@
 * You should install pytest for testing, or you can skip this step
 
 ```bash
-    $ git clone Mahmoud-Emad/ini-configuration-parser
+$ git clone Mahmoud-Emad/ini-configuration-parser
 
-    $ cd ini-configuration-parser
+$ cd ini-configuration-parser
 
-    $ pip install pytest
+$ pip install pytest
 ```
 
 ```python
