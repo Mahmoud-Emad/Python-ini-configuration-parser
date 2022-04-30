@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "ini_configuration_parser"
+version = "0.1.0"
+description = ""
+authors = ["Mahmoud Emad <mahmmoud.hassanein@gmail.com>"]
+keywords = ["parser", "ini", "ini_configuration_parser", "configuration"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/Mahmoud-Emad/ini-configuration-parser"
+repository = "https://github.com/Mahmoud-Emad/ini-configuration-parser"
+include = [
+    "LICENSE",
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

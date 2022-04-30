@@ -1,5 +1,5 @@
-from configure.parser import ConfigParser
-from errors.error import ErrorHandler
+from ini_configuration_parser.configure.parser import ConfigParser
+from ini_configuration_parser.errors.error import ErrorHandler
 import pytest, random
 
 

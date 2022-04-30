@@ -1,4 +1,4 @@
-from errors.error import ErrorHandler
+from ini_configuration_parser.errors.error import ErrorHandler
 from typing import Dict
 
 
