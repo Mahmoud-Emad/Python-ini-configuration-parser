@@ -9,12 +9,12 @@
 <p>Install the package</p>
 
 ```bash
-$ pip install ini-configuration-parser
+$ pip install pyini-parser
 ```
 
 ```python
 
-from configure.parser import ConfigParser
+from pyini_parser.configure.parser import ConfigParser
 
 config = ConfigParser()
 

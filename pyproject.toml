@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyini-parser"
-version = "0.3.0"
+version = "0.4.0"
 description = ""
 authors = ["Mahmoud Emad <mahmmoud.hassanein@gmail.com>"]
 keywords = ["parser", "ini", "ini_parser", "configuration"]
