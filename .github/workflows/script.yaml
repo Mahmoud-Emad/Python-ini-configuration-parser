@@ -1,0 +1,24 @@
+
+name: python-script
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v3
+      
+        
+      - name: install this package
+        run: pip install pyini-parser
+
+      - name: Test
+        run: pytest 
