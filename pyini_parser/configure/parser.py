@@ -12,8 +12,8 @@ class ConfigParser:
     ConfigParser class is used to parse configuration files in the INI format.
     """
     def __init__(self):
-        self.data = dict()
-        self.view = dict()
+        self.data = {}
+        self.view = {}
         self.filename = None
 
     def __str__(self):
@@ -34,7 +34,7 @@ class ConfigParser:
     def write(self, filename) -> str:
         """This method writes the given file to the given filename"""
         self.filename = filename
-        with open(self.filename.name, "w") as file:
+        with open(self.filename.name, "w", encoding="utf-8") as file:
             for section in self.sections():
                 ErrorHandler.validate_name(section)
                 file.write(f"[{section}]\n")
@@ -53,7 +53,7 @@ class ConfigParser:
         try:
             return self.view[section.upper()][key]
         except KeyError:
-            raise KeyError(f"Key {key} not found in section {section}")
+            raise KeyError(f"Key {key} not found in section {section}") from KeyError
 
     def read_from_string(self, string: str) -> Dict:
         """
@@ -66,11 +66,11 @@ class ConfigParser:
     def read(self, filename) -> Dict:
         """This method reads the given file and returns a dictionary of sections and their values"""
         self.filename = filename
-        return [self.filename.name]
+        return ErrorHandler.validate_reading_file(self.filename.name)
 
     def append(self, section, items):
         """This method appends a new key/value pair to the given section"""
-        if not type(items) == dict:
+        if not isinstance(items, dict):
             raise TypeError("Items Must be a dictionary type")
         self.data[section.upper()].update(items)
         return self.write(self.filename)

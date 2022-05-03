@@ -38,10 +38,30 @@ class ErrorHandler:
             if line.startswith("[") and line.endswith("]"):
                 section = line[1:-1].upper()
                 ErrorHandler.validate_name(section)
-                data[section] = dict()
+                data[section] = {}
             elif "=" in line:
                 key, value = line.split("=")
                 ErrorHandler.validate_name(key)
                 key = key.replace(' ', '')
                 data[section][key] = value
         return data
+
+    @staticmethod
+    def validate_reading_file(file_name):
+        """Validate reading file_name"""
+        with open(file_name, "r", encoding='utf-8') as file:
+            line_no = 0
+            for line in file:
+                line_no += 1
+                line = line.strip()
+                if line.startswith("[") and line.endswith("]"):
+                    section = line[1:-1]
+                    ErrorHandler.validate_name(section)
+                elif "=" in line:
+                    key = line[0:line.index("=")]
+                    ErrorHandler.validate_name(key)
+                elif line == '':
+                    continue
+                else:
+                    raise SyntaxError(f"Syntax Error at line {line_no}")
+        return [file_name]
