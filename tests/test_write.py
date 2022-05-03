@@ -51,3 +51,13 @@ def test_get_notfound():
     """Test get"""
     with pytest.raises(KeyError):
         config.get("database", "secretkey1")
+
+def test_append_keys():
+    """Test append keys"""
+    config.append("deployment", {"test_append_key":"This is value"})
+    assert config.get("deployment", "test_append_key") == "This is value"
+
+def test_append_wrong_type():
+    """Test append wrong type"""
+    with pytest.raises(TypeError):
+        config.append("deployment", ("test_append_key_2", "This is value"))

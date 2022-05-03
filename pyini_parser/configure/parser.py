@@ -70,5 +70,7 @@ class ConfigParser:
 
     def append(self, section, items):
         """This method appends a new key/value pair to the given section"""
+        if not type(items) == dict:
+            raise TypeError("Items Must be a dictionary type")
         self.data[section.upper()].update(items)
         return self.write(self.filename)
