@@ -49,6 +49,7 @@ class ErrorHandler:
     @staticmethod
     def validate_reading_file(file_name):
         """Validate reading file_name"""
+        data_read = {}
         with open(file_name, "r", encoding='utf-8') as file:
             line_no = 0
             for line in file:
@@ -57,11 +58,13 @@ class ErrorHandler:
                 if line.startswith("[") and line.endswith("]"):
                     section = line[1:-1]
                     ErrorHandler.validate_name(section)
+                    data_read[section] = {}
                 elif "=" in line:
-                    key = line[0:line.index("=")]
+                    key, value = line.split("=")
                     ErrorHandler.validate_name(key)
+                    data_read[section][key] = value
                 elif line == '':
                     continue
                 else:
                     raise SyntaxError(f"Syntax Error at line {line_no}")
-        return [file_name]
+        return data_read

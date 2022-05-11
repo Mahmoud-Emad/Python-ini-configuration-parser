@@ -41,4 +41,4 @@ def test_read_file():
     """Test read file"""
     with open("example.ini", "a") as f:
         file = config.read(f)
-        assert file == ['example.ini']
+        assert type(file) == dict
