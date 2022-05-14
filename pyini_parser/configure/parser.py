@@ -66,7 +66,7 @@ class ConfigParser:
     def read(self, filename) -> Dict:
         """This method reads the given file and returns a dictionary of sections and their values"""
         self.filename = filename
-        return ErrorHandler.validate_reading_file(self.filename.name)
+        return ErrorHandler.validate_reading_file(self.filename)
 
     def append(self, section, items):
         """This method appends a new key/value pair to the given section"""
